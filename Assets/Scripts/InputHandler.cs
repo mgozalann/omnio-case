@@ -10,6 +10,7 @@ public class InputHandler : MonoBehaviour
     public static InputHandler Instance => _instance;
     
     [SerializeField] private float _unitMoveSpeed;
+    [SerializeField] private float _mouseThreshold;
 
     private Vector3 _initialMousePosition; 
 
@@ -19,6 +20,8 @@ public class InputHandler : MonoBehaviour
     private bool _isDragging = false;
     private bool _hasMoved;
 
+    
+    
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -56,7 +59,7 @@ public class InputHandler : MonoBehaviour
             {
                 MoveObjectWithMouse();
             }
-            else if (Vector3.Distance(Input.mousePosition, _initialMousePosition) > 0.1f)
+            else if (Vector3.Distance(Input.mousePosition, _initialMousePosition) > _mouseThreshold)
             {
                 StartDragging();
                 _hasMoved = true;
