@@ -31,7 +31,7 @@ public class Generator : BaseUnit
 
                 BaseUnit unit = BaseUnitObjectPool.GetObjectFromPool(spawnUnit);
                 
-                unit.Init(tile,spawnUnit.MergedUnitData(),BaseUnitObjectPool);
+                unit.Init(tile,spawnUnit.GetBaseUnitData(),BaseUnitObjectPool);
                 
                 unit.transform.position = transform.position;
                 
@@ -42,7 +42,7 @@ public class Generator : BaseUnit
         }
     }
 
-    public override BaseUnitSOData MergedUnitData()
+    public override BaseUnitSOData GetBaseUnitData()
     {
         return _baseUnitSOData;
     }
@@ -51,6 +51,7 @@ public class Generator : BaseUnit
     {
         _baseUnitSOData = baseUnitSOData;
     }
+
 
     public override void SetCurrentTile(Tile tile)
     {

@@ -30,6 +30,7 @@ public class BoardManager : Singleton<BoardManager>
                     this.gameObject.transform);
                 
                 spawnedTile.name = $"Tile {i} {j}";
+                spawnedTile.Init(i,j);
 
                 _tiles[new Vector2Int(i, j)] = spawnedTile;
             }
@@ -61,5 +62,20 @@ public class BoardManager : Singleton<BoardManager>
         }
 
         return new Vector2Int(-1, -1);
+    }
+    
+    public List<Tile> GetOccupiedTiles()
+    {
+        List<Tile> tiles = new List<Tile>();
+
+        foreach (var tile in _tiles.Values)
+        {
+            if (!tile.IsEmpty())
+            {
+                tiles.Add(tile);
+            }
+        }
+
+        return tiles;
     }
 }

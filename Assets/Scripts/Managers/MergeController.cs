@@ -35,7 +35,7 @@ public class MergeController : MonoBehaviour
 
             baseUnitInstance.transform.position = tile.transform.position;
 
-            baseUnitInstance.Init(tile, mergedUnit.MergedUnitData(), _baseUnitObjectPool);
+            baseUnitInstance.Init(tile, mergedUnit.GetBaseUnitData(), _baseUnitObjectPool);
 
             baseUnitInstance.gameObject.SetActive(true);
 

@@ -2,7 +2,7 @@
 
 public class Product : BaseUnit
 {
-    
+
     public override void SetCurrentTile(Tile tile)
     {
         CurrentTile = tile;
@@ -20,7 +20,7 @@ public class Product : BaseUnit
         return CurrentTile;
     }
 
-    public override BaseUnitSOData MergedUnitData()
+    public override BaseUnitSOData GetBaseUnitData()
     {
         return _baseUnitSOData;
     }

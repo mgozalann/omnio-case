@@ -34,7 +34,7 @@ public abstract class BaseUnit : MonoBehaviour
     public abstract void SetCurrentTile(Tile tile);
     public abstract BaseUnit MergedUnit();
     public abstract Tile GetCurrentTile();
-    public abstract BaseUnitSOData MergedUnitData();
+    public abstract BaseUnitSOData GetBaseUnitData();
     public abstract void PlayMergeAnim();
     public abstract bool IsMaxLevel();
     public abstract string GetUnitName();

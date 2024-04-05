@@ -16,4 +16,6 @@ MonoBehaviour:
   UnitSprite: {fileID: 21300000, guid: 4c9b0696544d5554bacbad312ef9362a, type: 3}
   IsMaxLevel: 0
   MergedUnit: {fileID: 4721416658432153485, guid: a7b886ce7cea2a4468cbcc2461e79166, type: 3}
-  MergedUnitData: {fileID: 11400000, guid: 4d73984ba5888694a8ca02837f6ac4de, type: 2}
+  BaseUnit: {fileID: 3033699501297793230, guid: 4437fecb8b566cb479f2560edf8341de, type: 3}
+  IsGenerator: 0
+  GeneratorSOData: {fileID: 0}

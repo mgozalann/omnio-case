@@ -11,7 +11,7 @@ public class BaseUnitSOData : ScriptableObject
     public bool IsMaxLevel;
     
     public BaseUnit MergedUnit;
-    public BaseUnitSOData MergedUnitData;
+    public BaseUnit BaseUnit;
 
     public bool IsGenerator;
     
@@ -30,6 +30,7 @@ public class BaseUnitSOData : ScriptableObject
             EditorGUILayout.PropertyField(serializedObject.FindProperty("UnitSprite"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("IsMaxLevel"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("MergedUnit"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("BaseUnit"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("IsGenerator"));
 
             BaseUnitSOData unitSOData = (BaseUnitSOData)target;

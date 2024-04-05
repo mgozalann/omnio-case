@@ -1,16 +1,66 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.IO;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private BaseUnit[] _baseUnitPrefabs;
+    [SerializeField] private BaseUnitObjectPool _baseUnitObjectPool;
 
-   
+    public SaveData LoadGame()
+    {
+        string path = Application.persistentDataPath + "/saveData.json";
+        if (File.Exists(path))
+        {
+            string jsonData = File.ReadAllText(path);
+            SaveData saveData = JsonUtility.FromJson<SaveData>(jsonData);
+            return saveData;
+        }
+        else
+        {
+
+            Debug.LogWarning("Save file not found.");
+            return null;
+        }
+    }
+    
     private void Start()
     {
-        StartCoroutine(SpawnUnits());
+        LoadSavedGame();
     }
 
+    private void LoadSavedGame()
+    {
+        var saveData = LoadGame();
+        if (saveData != null)
+        {
+            foreach (var saveDataItem in saveData.SaveDataItems)
+            {
+                Vector2Int tilePos = saveDataItem.TilePos;
+                
+                BaseUnitSOData baseUnitSO = saveDataItem._baseUnitSOData;
+
+                BaseUnit baseUnit = _baseUnitObjectPool.GetObjectFromPool(baseUnitSO.BaseUnit);
+
+                Tile tile = BoardManager.Instance.GetTileAtPosition(tilePos);
+                
+                baseUnit.transform.position = tile.transform.position;
+
+                baseUnit.Init(tile, baseUnitSO, _baseUnitObjectPool);
+                
+                baseUnit.gameObject.SetActive(true);
+                
+                tile.SetUnit(baseUnit);
+            }
+        }
+        else
+        {
+            StartCoroutine(SpawnUnits());
+        }
+    }
+    
+    
     private IEnumerator SpawnUnits()
     {
         yield return null;
