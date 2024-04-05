@@ -15,4 +15,5 @@ MonoBehaviour:
   UnitName: P1_1
   UnitSprite: {fileID: 21300000, guid: 3619f0ce8304cc447bf63390c6304b34, type: 3}
   IsMaxLevel: 0
-  MergedUnit: {fileID: 7929114046175357710, guid: da4969dcaca21424b9d3b42bc4c50070, type: 3}
+  MergedUnit: {fileID: 4721416658432153485, guid: da4969dcaca21424b9d3b42bc4c50070, type: 3}
+  MergedUnitData: {fileID: 11400000, guid: c970b0c618751c546a398780760d6107, type: 2}

@@ -1,28 +1,36 @@
 ﻿using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : Component
+public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T _instance;
+
     public static T Instance
     {
         get
         {
             if (_instance == null)
             {
-                // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
                 _instance = FindObjectOfType<T>();
-                if(_instance == null)
+
+                if (_instance == null)
                 {
-                    Debug.Log($"Error couldn't find gameObject of type {nameof(T)} ");
+                    GameObject singletonObject = new GameObject(typeof(T).Name);
+                    _instance = singletonObject.AddComponent<T>();
                 }
             }
             return _instance;
         }
     }
 
-
     protected virtual void Awake()
     {
-        _instance = this as T; 
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        _instance = this as T;
+        DontDestroyOnLoad(gameObject);
     }
 }

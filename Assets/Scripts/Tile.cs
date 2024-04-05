@@ -2,24 +2,24 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField] private Unit _unit;
+    private BaseUnit _baseUnit;
 
     public bool IsEmpty()
     {
-        return _unit == null;
+        return _baseUnit == null;
     }
-    public void SetUnit(Unit unit)
+    public void SetUnit(BaseUnit baseUnit)
     {
-        _unit = unit;
+        _baseUnit = baseUnit;
     }
 
-    public Unit GetUnit()
+    public BaseUnit GetUnit()
     {
-        return _unit;
+        return _baseUnit;
     }
     
     public void RemoveUnit()
     {
-        _unit = null;
+        _baseUnit = null;
     }
 }
